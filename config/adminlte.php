@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'The Hungry Fork',
     'title_prefix' => 'ShopApp | ',
     'title_postfix' => '',
 
@@ -63,12 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>Shop</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo' => '<b>The Hungry Fork ',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +82,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -316,39 +312,36 @@ return [
             'url' => '/home',
             'icon' => 'fas fw fa-home',
         ],
-        [
-            'text'    => 'Catalogos',
-            'icon'    => 'fas fa-fw fa-list',
-            'submenu' => [
+        
                 [
                     'text' => 'Categorias',
                     'route'  => 'categorias.create',
-                    'icon' => 'fas fa-fw fa-bars',
+                    'icon' => 'fas fa-fw fa-list',
                 ],
                 [
-                    'text' => 'Marcas',
+                    'text' => 'Menú',
                     'route'  => 'marcas.create',
-                    'icon' => 'fas fa-fw fa-registered',
+                    'icon' => 'fas fa-hamburger',
                 ],
-            ],
-        ],
+            
+        
         [
             'text' => 'Productos',
             'route' => 'productos.create',
-            'icon'=> 'fas fa-fw fa-laptop',
+            'icon'=> '',
         ],
         [
             'text' => 'Gestión de ordenes',
             'route' => 'ordenes.create',
-            'icon'=> 'fas fa-fw fa-shopping-cart',
+            'icon'=> 'fas fa-sort-amount-up',
         ],
         [
             'text'    => 'Reportes',
-            'icon'    => 'fas fa-fw fa-chart-area',
+            'icon'    => 'fas fa-folder-open',
             'submenu' => [
                 [
-                    'text' => 'Ordenes Atendidas',
-                    'route'  => 'categorias.create',
+                    'text' => 'Ordenes',
+                    'route'  => 'reportes.view',
                     'icon' => 'fas fa-fw fa-check',
                 ],
                 [

@@ -4,7 +4,7 @@
             <Toolbar class="mb-4">
                 <template #start>
                     <!--Colocar radio button para seleccionar por estado de cliente-->
-                    <div class="form-check form-check-inline">
+                    <!--<div class="form-check form-check-inline">
                     <input class="form-check-input" v-model="estado" type="radio" name="orden.estado" id="inlineRadio1" value="R" checked>
                     <label class="form-check-label" for="inlineRadio1">Ordenes Recibidas</label>
                     </div>
@@ -15,7 +15,7 @@
                     <div class="form-check form-check-inline">
                     <input class="form-check-input" v-model="estado" type="radio" name="orden.estado" id="inlineRadio3" value="A">
                     <label class="form-check-label" for="inlineRadio3">Ordenes Anuladas</label>
-                    </div>
+                    </div>-->
                 </template>
                 <template #end>
                     <IconField iconPosition="left">
@@ -35,12 +35,11 @@
                 <Column field="correlativo" header="Orden No" sortable></Column>
                 <Column field="fecha" header="Fecha Orden"></Column>
                 <Column field="fecha_despacho" header="Fecha Despacho"></Column>
-                <Column field="monto" header="Total Orden">
+                <Column field="monto" header="Estado">
                     <template #body="slotProps">
                         {{ formatCurrency(slotProps.data.monto) }}
                     </template>
                 </Column>
-                <Column field="cliente.name" header="Cliente"></Column>
                 <Column :exportable="false">
                     <template #body="slotProps">
                         <Button icon="pi pi-list" outlined rounded class="mr-2" severity="info" @click="viewDetalle(slotProps.data)" v-tooltip="{ value: 'Ver Detalle', showDelay: 100, hideDelay: 300 }" />
@@ -129,6 +128,7 @@
             async fetchOrdenes() {
                 await this.axios.get(`/api/ordenes`)
                 .then(response => {
+                    console.log(response.data)
                     this.ordenes = response.data;
                 })
                 .catch(error => {

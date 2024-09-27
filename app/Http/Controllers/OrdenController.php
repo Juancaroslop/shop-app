@@ -22,13 +22,30 @@ class OrdenController extends Controller
                 //Obtenemos el detalle de la orden
                 $detalle = $orden->detalleOrdenes->toArray();
                 //recorremos el detalle de la orden
+                
                 $f = 0;
                 foreach($orden->detalleOrdenes as $item){
-                    $detalle[$f]['producto'] = $item->producto->toArray();
+                    
+                    // $detalle[$f]['producto'] = $item->productos->toArray();
+                    /*
+                    $detalle[$f]["producto"] = DB::table('productos')
+                    ->where("productos.id","=",$item->producto_id)
+                    ->select('productos.*')
+                    ->get()->toArray();*/
+                    /*
                     $detalle[$f]['producto']['marca'] = $item->producto->marca->toArray();
                     $detalle[$f]['producto']['categoria'] = $item->producto->categoria->toArray();
+                    */
+                    $productos = DB::table('marcas')
+                    ->join('productos', 'marcas.id', '=', 'productos.marca_id')
+                    ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
+                    ->where("productos.id","=",$item->producto_id)
+                    ->select('productos.*', 'marcas.nombre as nombre_marca', 'categorias.nombre as nombre_categoria')
+                    ->get()->toArray();
+                    $detalle[$f]['producto'] = $productos;
                     $f++;
                 }
+                
                 $response[$i]['detalleOrdenes'] = $detalle;
                 $i++;
             }

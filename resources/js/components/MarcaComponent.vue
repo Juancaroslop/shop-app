@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-4 col-sm-12">
-                                <h5 class="float-start">Listado de Marcas de Prodcutos</h5>
+                                <h5 class="float-start">Listado de Menus</h5>
                             </div>
                             <div class="input-group rounded col-md-4 col-sm-12">
                                 <input type="search" v-model="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -22,7 +22,7 @@
                         <table class="table bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">Marca</th>
+                                    <th scope="col">Menu</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
@@ -90,7 +90,7 @@
 
         computed:{
             formTitle(){
-                return this.marca.id == null ? "Agregar Marca" : "Actualizar Marca";
+                return this.marca.id == null ? "Agregar Menu" : "Actualizar Menu";
             },
             btnTitle(){
                 return this.marca.id == null ? "Guardar" : "Actualizar";
@@ -145,7 +145,7 @@
                     if (accion == "add") {
                         //peticion para guardar una marca
                         if (this.existMarca(me.marca)) {
-                            this.$swal.fire("Registro duplicado","Ya existe una marca registrada con este nombre en la base de datos",'warning');
+                            this.$swal.fire("Registro duplicado","Ya existe un menu registrada con este nombre en la base de datos",'warning');
                             return;
                         }
                         await this.axios.post('/api/marcas', me.marca)
@@ -236,7 +236,7 @@
                         }else{
                             this.$swal.fire({
                                 icon: 'error',
-                                text: 'No se puede eliminar, ya existen autos registrados de esta marca'
+                                text: 'No se puede eliminar, ya existen  registros de este menu'
                             });
                         }
                         break;

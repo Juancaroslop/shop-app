@@ -38,13 +38,13 @@ class MarcaController extends Controller
             $record = Marca::where("nombre", $nombre)->first();
             if($record){
                 return response()->json(["status"=> 'Conflict',
-                "data"=> null,"message"=> 'Ya existe una marca con este nombre, digite otro'],409);
+                "data"=> null,"message"=> 'Ya existe un menú con este nombre, digite otro'],409);
             }else{
                 $marca = new Marca();
                 $marca->nombre = $request->nombre;
                 if($marca->save() >0){
                     return response()->json(["status"=> 'Created',
-                     "data"=> $marca, "message"=> 'Marca Registrada'],201);
+                     "data"=> $marca, "message"=> 'Menú Registrado'],201);
                 }else{
                     return response()->json(["status"=> 'Not Acceptable',
                     "data"=> null, "message"=> 'Error al insertar el registro de Marca'],406);
@@ -88,13 +88,13 @@ class MarcaController extends Controller
             $record = Marca::where("nombre", $nombre)->first();
             if($record){
                 return response()->json(["status"=> 'Conflict',
-                "data"=> null,"message"=> 'Ya existe una marca con este nombre, digite otro'],409);
+                "data"=> null,"message"=> 'Ya existe un     Menú con este nombre, digite otro'],409);
             }else{
                 $categoria = Marca::findOrFail($id);
                 $categoria->nombre = $request->nombre;
                 if($categoria->update() >0){
                     return response()->json(["status"=> 'Updated',
-                     "data"=> $categoria, "message"=> 'Marca Actualizada...!'],202);
+                     "data"=> $categoria, "message"=> 'Menú Actualizado...!'],202);
                 }else{
                     return response()->json(["status"=> 'Not Acceptable',
                     "data"=> null, "message"=> 'Error al actualizar el registro'],406);
@@ -115,10 +115,10 @@ class MarcaController extends Controller
             $marca = Marca::findOrFail($id);
             if($marca->delete() > 0){
                 return response()->json(["status"=> 'Deleted',
-                 "data"=> null, "message"=> 'Marca Eliminada...!'],205);
+                 "data"=> null, "message"=> 'Menú Eliminado...!'],205);
             }else{
                 return response()->json(["status"=> 'Conflict',
-                "data"=> null, "message"=> 'No se puede eliminar esta marca'],409);
+                "data"=> null, "message"=> 'No se puede eliminar este   Menú'],409);
             }
         }catch(\Exception $e){
             return $e->getMessage();
